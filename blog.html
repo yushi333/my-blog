@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人博客</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #1f2937;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --secondary-text: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        /* 导航栏 */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        /* 博客文章列表 */
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .post-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 240px;
+            background-color: #e5e7eb;
+            object-fit: cover;
+        }
+
+        .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-meta {
+            font-size: 0.875rem;
+            color: var(--secondary-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .post-excerpt {
+            color: var(--secondary-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* 侧边栏 */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .widget {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .widget-list {
+            list-style: none;
+        }
+
+        .widget-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .widget-list a {
+            text-decoration: none;
+            color: var(--secondary-text);
+            transition: color 0.2s;
+        }
+
+        .widget-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin: 0 0.25rem 0.5rem 0;
+            text-decoration: none;
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--card-bg);
+            margin-top: 4rem;
+            padding: 2rem;
+            text-align: center;
+            color: var(--secondary-text);
+            border-top: 1px solid #e5e7eb;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                margin: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">DevBlog</a>
+            <div class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">技术文章</a>
+                <a href="#">生活随笔</a>
+                <a href="#">关于我</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main class="blog-posts">
+            <!-- 文章 1 -->
+            <article class="post-card">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Coding" class="post-image">
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span>2024年3月21日</span> &bull; <span>前端开发</span>
+                    </div>
+                    <h2 class="post-title">探索现代 CSS：Grid 与 Flexbox 的实战应用</h2>
+                    <p class="post-excerpt">
+                        在现代网页布局中，CSS Grid 和 Flexbox 是两个最强大的工具。本文将深入探讨它们的区别，以及如何在实际项目中组合使用它们来构建复杂的响应式布局...
+                    </p>
+                    <a href="#" class="read-more">阅读全文 &rarr;</a>
+                </div>
+            </article>
+
+            <!-- 文章 2 -->
+            <article class="post-card">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Code" class="post-image">
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span>2024年3月18日</span> &bull; <span>编程心得</span>
+                    </div>
+                    <h2 class="post-title">如何保持高效的编码状态</h2>
+                    <p class="post-excerpt">
+                        作为程序员，保持专注和高效至关重要。在这篇文章中，我将分享一些关于时间管理、避免倦怠以及优化工作环境的个人经验和技巧...
+                    </p>
+                    <a href="#" class="read-more">阅读全文 &rarr;</a>
+                </div>
+            </article>
+
+            <!-- 文章 3 -->
+            <article class="post-card">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Technology" class="post-image">
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span>2024年3月15日</span> &bull; <span>人工智能</span>
+                    </div>
+                    <h2 class="post-title">AI 辅助编程：工具还是威胁？</h2>
+                    <p class="post-excerpt">
+                        随着 GitHub Copilot 和 ChatGPT 等工具的兴起，开发者的工作方式正在发生改变。我们该如何正确利用这些工具来提升生产力，而不是过度依赖？
+                    </p>
+                    <a href="#" class="read-more">阅读全文 &rarr;</a>
+                </div>
+            </article>
+        </main>
+
+        <aside>
+            <!-- 个人简介 -->
+            <div class="widget">
+                <h3 class="widget-title">关于作者</h3>
+                <p style="color: var(--secondary-text); margin-bottom: 1rem;">
+                    你好！我是 StackMaster。这里是我记录学习笔记、分享技术见解和生活感悟的地方。热爱开源，热衷于探索新技术。
+                </p>
+            </div>
+
+            <!-- 分类目录 -->
+            <div class="widget">
+                <h3 class="widget-title">分类目录</h3>
+                <ul class="widget-list">
+                    <li><a href="#">前端开发 (12)</a></li>
+                    <li><a href="#">后端架构 (8)</a></li>
+                    <li><a href="#">算法与数据结构 (5)</a></li>
+                    <li><a href="#">生活随笔 (3)</a></li>
+                </ul>
+            </div>
+
+            <!-- 热门标签 -->
+            <div class="widget">
+                <h3 class="widget-title">热门标签</h3>
+                <div>
+                    <a href="#" class="tag">JavaScript</a>
+                    <a href="#" class="tag">React</a>
+                    <a href="#" class="tag">Python</a>
+                    <a href="#" class="tag">CSS3</a>
+                    <a href="#" class="tag">Web Design</a>
+                    <a href="#" class="tag">Git</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 DevBlog. All rights reserved. | Built with HTML & CSS</p>
+    </footer>
+</body>
+</html>
