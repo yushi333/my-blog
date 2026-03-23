@@ -9,7 +9,7 @@
             --primary-color: #2563eb;
             --text-color: #1f2937;
             --bg-color: #f3f4f6;
-            --card-bg: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.85); /* 设置卡片半透明，透出背景图 */
             --secondary-text: #6b7280;
         }
 
@@ -24,10 +24,10 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
-            background-image: url('https://tse3-mm.cn.bing.net/th/id/OIP-C.nz6FK9SBNPBomclXbH3t-wHaDt?w=313&h=175&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3');
+            background-image: url('https://cdnimg-v2.gamekee.com/wiki2.0/images/829/43637/2022/4/18/610809.jpg?x-image-process=image/format,webp/ignore-error,1&eo-img.format=webp');
             background-size: cover;
             background-attachment: fixed;
-            background-position: center;
+            background-position: left center; /* 优先展示背景左侧的内容 */
         }
 
         /* 导航栏 */
@@ -40,8 +40,8 @@
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 900px; /* 缩小导航栏宽度以配合内容 */
+            margin: 0 5% 0 auto; /* 靠右布局：左侧自动，右侧留5%边距 */
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -68,8 +68,8 @@
 
         /* 主容器 */
         .container {
-            max-width: 1200px;
-            margin: 2rem auto;
+            max-width: 900px; /* 整体压缩宽度 */
+            margin: 2rem 5% 2rem auto; /* 靠右布局：左侧空间自动填充，右侧留5%边距，从而不遮挡左侧背景 */
             padding: 0 2rem;
             display: grid;
             grid-template-columns: 7fr 3fr;
@@ -299,6 +299,10 @@
             <!-- 个人简介 -->
             <div class="widget">
                 <h3 class="widget-title">关于作者</h3>
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <!-- 在这里的 src="" 里面填入你想替换的头像图片网址，或者本地相对路径 -->
+                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=yushi" alt="我的头像" title="若要修改头像，请在 index.html 代码中搜索这段并在 src 中替换链接" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color);">
+                </div>
                 <p style="color: var(--secondary-text); margin-bottom: 1rem;">
                     你好！我是 语失。这里是我记录学习笔记、分享技术见解和生活感悟的地方。热爱开源，热衷于探索新技术。
                 </p>
